@@ -31,6 +31,10 @@ class ShoppingCart
   def is_full?
     total_number_of_products > @capacity
   end
+
+  def products_by_category(cat)
+    @products.select {|product| cat == product.category}
+  end
 end
 
 # -- Method for name: capacity hash I wanted to try making --#
