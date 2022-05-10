@@ -26,6 +26,7 @@ RSpec.describe ShoppingCart do
     @cart.add_product(@product2)
 
     expected = {name: "King Soopers", capacity: 30}
+    # expected = { "King Soopers" => "30items"} #successful attempt at reconverting integer to string while adding characters in
 
     expect(@cart.details).to eq(expected)
   end

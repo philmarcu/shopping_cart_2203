@@ -12,11 +12,18 @@ class ShoppingCart
     @products.push(product)
   end
 
-  def details
+  def details #without parameters you can set up a hash the old fashion way
     detail_hash = {
       name: @name,
       capacity: @capacity
     }
-
   end
+
+
+
 end
+
+# -- Method for name: capacity hash I wanted to try making --#
+# def details
+#   detail_hash = {@name => @capacity.to_s.insert(2, "items")}
+# end
