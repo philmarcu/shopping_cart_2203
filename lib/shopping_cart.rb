@@ -1,11 +1,12 @@
 class ShoppingCart
 
 
-  attr_reader :name, :capacity, :products
+  attr_reader :name, :capacity, :products #, :is_full
   def initialize(name, capacity)
     @name = name
     @capacity = capacity.delete("items").to_i
     @products = []
+    # @is_full = false
   end
 
   def add_product(product)
@@ -19,8 +20,17 @@ class ShoppingCart
     }
   end
 
+  def total_number_of_products
+    total = 0
+    @products.each do |product|
+      total += product.quantity
+    end
+    return total
+  end
 
-
+  def is_full?
+    total_number_of_products > @capacity
+  end
 end
 
 # -- Method for name: capacity hash I wanted to try making --#

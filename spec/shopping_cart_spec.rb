@@ -6,6 +6,8 @@ RSpec.describe ShoppingCart do
     @cart = ShoppingCart.new("King Soopers", "30items")
     @product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     @product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    @product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+    @product4 = Product.new(:produce, 'apples', 0.99, '20')
   end
 
   it 'exists & has attributes' do
@@ -29,5 +31,22 @@ RSpec.describe ShoppingCart do
     # expected = { "King Soopers" => "30items"} #successful attempt at reconverting integer to string while adding characters in
 
     expect(@cart.details).to eq(expected)
+  end
+
+  it 'is not full by default' do
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+
+    expect(@cart.is_full?).to eq(false)
+  end
+
+  it 'can give the #total_number_of_products' do
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    @cart.add_product(@product4)
+
+    expect(@cart.is_full?).to eq(true)
   end
 end
